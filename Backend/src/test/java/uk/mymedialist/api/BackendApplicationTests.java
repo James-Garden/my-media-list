@@ -1,14 +1,18 @@
 package uk.mymedialist.api;
 
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-class BackendApplicationTests {
+class BackendApplicationTests extends AbstractIntegrationTest {
+
+  @Autowired
+  private EntityManager entityManager;
 
   @Test
   void contextLoads() {
-    assertThat(1+1).isEqualTo(2);
+    assertThat(entityManager).isNotNull();
   }
 }
