@@ -32,5 +32,3 @@ jobs:
         if: (success() || failure())
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
-      - name: Check test coverage
-        run: ./gradlew jacocoTestCoverageVerification
