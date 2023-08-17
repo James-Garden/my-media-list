@@ -60,16 +60,16 @@ async function loadMedia(): Promise<Media> {
 
 .view-media--right-column {
   flex-grow: 1;
+  display: block;
 }
 
 .view-media--title-wrapper {
   border-bottom: solid 1px #f8f8f8;
-  padding-right: 400px;
-  width: min-content;
   font-weight: bolder;
   font-size: 3em;
-  line-height: 0;
   max-width: 100%;
+  line-height: 2em;
+  flex-grow: 1;
 }
 
 </style>

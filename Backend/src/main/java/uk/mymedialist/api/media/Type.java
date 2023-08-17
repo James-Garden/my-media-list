@@ -1,6 +1,6 @@
 package uk.mymedialist.api.media;
 
-public enum MediaType {
+public enum Type {
 
   FILM,
   SERIES

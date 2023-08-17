@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('@/views/MediaView.vue')
     },
     {
+      path: '/media/create',
+      name: 'create-media',
+      component: () => import('@/views/CreateMediaView.vue')
+    },
+    {
       path: '/',
       name: 'home',
       component: () => import('@/views/HomeView.vue')

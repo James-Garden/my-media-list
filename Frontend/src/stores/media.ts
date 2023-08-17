@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { getClient } from '@/utils/api-client-provider';
-import type Media from '@/entities/media';
+import type Media, { UnsavedMedia } from '@/entities/media';
 import MediaApi from '@/apis/media';
 
 export const useMediaStore = defineStore('media', () => {
@@ -20,5 +20,9 @@ export const useMediaStore = defineStore('media', () => {
     return media;
   }
 
-  return { getMedia };
+  async function createMedia(media: UnsavedMedia) {
+    return mediaApi.createMedia(media);
+  }
+
+  return { getMedia, createMedia };
 });

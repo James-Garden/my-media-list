@@ -33,7 +33,7 @@ public class Media {
   private String description;
 
   @Enumerated(EnumType.STRING)
-  private MediaType mediaType;
+  private Type type;
 
   private Integer episodes;
 
@@ -43,7 +43,7 @@ public class Media {
         .setTitle(title)
         .setImageUrl(imageUrl)
         .setDescription(description)
-        .setMediaType(mediaType)
+        .setType(type)
         .setEpisodes(episodes);
   }
 
@@ -63,39 +63,44 @@ public class Media {
     return title;
   }
 
-  public void setTitle(String title) {
+  public Media setTitle(String title) {
     this.title = title;
+    return this;
   }
 
   public String getImageUrl() {
     return imageUrl;
   }
 
-  public void setImageUrl(String imageUrl) {
+  public Media setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+    return this;
   }
 
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public Media setDescription(String description) {
     this.description = description;
+    return this;
   }
 
-  public MediaType getMediaType() {
-    return mediaType;
+  public Type getType() {
+    return type;
   }
 
-  public void setMediaType(MediaType mediaType) {
-    this.mediaType = mediaType;
+  public Media setType(Type type) {
+    this.type = type;
+    return this;
   }
 
   public Integer getEpisodes() {
     return episodes;
   }
 
-  public void setEpisodes(Integer episodes) {
+  public Media setEpisodes(Integer episodes) {
     this.episodes = episodes;
+    return this;
   }
 }
