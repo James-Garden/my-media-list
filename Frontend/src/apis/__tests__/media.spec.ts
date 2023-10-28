@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import MediaApi from '@/apis/media';
-import type Media from '@/entities/media';
+import type { Media } from '@/entities/media';
 import AxiosMockAdapter from 'axios-mock-adapter';
 import { getClient } from '@/utils/api-client-provider';
 
@@ -23,7 +23,10 @@ describe('Media API tests', () => {
     const expectedMedia: Media = {
       id: mediaId,
       title: 'Some media title',
-      mediaType: 'FILM'
+      type: 'FILM',
+      description: 'some desc',
+      imageUrl: 'some-url',
+      episodes: 1
     };
 
     axiosMock.onGet(`/media/${mediaId}`).reply(200, expectedMedia);
@@ -42,4 +45,46 @@ describe('Media API tests', () => {
 
     expect(actualMedia).toBeUndefined();
   });
-})
+
+  test('Create a valid Media', async () => {
+    const sentMedia: Media = {
+      id: 'unused',
+      title: 'Some new media title',
+      type: 'SERIES',
+      description: 'some desc',
+      imageUrl: 'some-image-url',
+      episodes: 25
+    }
+    const returnedMedia = structuredClone(sentMedia);
+    returnedMedia.id = 'some generated UUID';
+
+    axiosMock.onPost('/media').reply(201, returnedMedia);
+
+    const actualMedia = await mediaApi.createMedia(sentMedia);
+
+    expect(actualMedia).toStrictEqual(returnedMedia);
+  });
+
+  test('Create an invalid Media', async () => {
+    const sentMedia: Media = {
+      id: 'unused',
+      title: 'Some new media title',
+      type: 'SERIES',
+      description: 'some desc',
+      imageUrl: 'some-image-url',
+      episodes: 25
+    }
+    const validationErrors = [
+      {
+        field: 'title',
+        error: 'some validation error'
+      }
+    ];
+
+    axiosMock.onPost('/media').reply(422, validationErrors);
+
+    const returnedValidationErrors = await mediaApi.createMedia(sentMedia);
+
+    expect(returnedValidationErrors).toStrictEqual(validationErrors);
+  });
+});

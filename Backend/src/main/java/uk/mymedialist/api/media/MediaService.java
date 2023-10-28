@@ -20,4 +20,20 @@ class MediaService {
         .findById(mediaId)
         .map(Media::asView);
   }
+
+  public MediaView createMedia(MediaView mediaView) {
+    var media = new Media()
+        .setType(mediaView.getType())
+        .setTitle(mediaView.getTitle())
+        .setDescription(mediaView.getDescription())
+        .setImageUrl(mediaView.getImageUrl());
+
+    if (Type.FILM == media.getType()) {
+      media.setEpisodes(1);
+    } else {
+      media.setEpisodes(mediaView.getEpisodes());
+    }
+
+    return mediaRepository.save(media).asView();
+  }
 }

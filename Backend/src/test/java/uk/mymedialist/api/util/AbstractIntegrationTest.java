@@ -1,5 +1,6 @@
 package uk.mymedialist.api.util;
 
+
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -49,4 +50,3 @@ public abstract class AbstractIntegrationTest {
     }
   }
 }
-

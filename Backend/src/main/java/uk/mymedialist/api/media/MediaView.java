@@ -1,16 +1,24 @@
 package uk.mymedialist.api.media;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MediaView {
 
+  static final String TITLE_FIELD = "title";
+  static final String IMAGE_URL_FIELD = "imageUrl";
+  static final String DESCRIPTION_FIELD = "description";
+  static final String TYPE_FIELD = "type";
+  static final String EPISODES_FIELD = "episodes";
+
   private UUID id;
+  @JsonProperty
   private String title;
   private String imageUrl;
   private String description;
-  private MediaType mediaType;
+  private Type type;
   private Integer episodes;
 
   public UUID getId() {
@@ -49,12 +57,12 @@ public class MediaView {
     return this;
   }
 
-  public MediaType getMediaType() {
-    return mediaType;
+  public Type getType() {
+    return type;
   }
 
-  public MediaView setMediaType(MediaType mediaType) {
-    this.mediaType = mediaType;
+  public MediaView setType(Type type) {
+    this.type = type;
     return this;
   }
 

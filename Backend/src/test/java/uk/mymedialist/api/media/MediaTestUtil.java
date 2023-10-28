@@ -15,12 +15,23 @@ public class MediaTestUtil {
   }
 
   public static Media film() {
-    var media = new Media();
-    media.setTitle("Test title");
-    media.setDescription("Test description");
-    media.setImageUrl("www.some-website.com/example");
-    media.setMediaType(MediaType.FILM);
+    var media = untypedMedia();
+    media.setType(Type.FILM);
     media.setEpisodes(1);
     return media;
+  }
+
+  public static Media series() {
+    var media = untypedMedia();
+    media.setType(Type.SERIES);
+    media.setEpisodes(25);
+    return media;
+  }
+
+  private static Media untypedMedia() {
+    return new Media()
+        .setTitle("Test title")
+        .setDescription("Test description")
+        .setImageUrl("https://www.some-website.com/example.png");
   }
 }
