@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,10 +21,10 @@ public class Media {
   private UUID id;
 
   @CreationTimestamp
-  private Instant creationTimestamp;
+  private ZonedDateTime creationTimestamp;
 
   @UpdateTimestamp
-  private Instant updateTimestamp;
+  private ZonedDateTime updateTimestamp;
 
   private String title;
 
@@ -51,11 +51,11 @@ public class Media {
     return id;
   }
 
-  public Instant getCreationTimestamp() {
+  public ZonedDateTime getCreationTimestamp() {
     return creationTimestamp;
   }
 
-  public Instant getUpdateTimestamp() {
+  public ZonedDateTime getUpdateTimestamp() {
     return updateTimestamp;
   }
 
@@ -99,8 +99,7 @@ public class Media {
     return episodes;
   }
 
-  public Media setEpisodes(Integer episodes) {
+  public void setEpisodes(Integer episodes) {
     this.episodes = episodes;
-    return this;
   }
 }
