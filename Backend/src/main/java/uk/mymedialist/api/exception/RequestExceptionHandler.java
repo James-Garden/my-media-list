@@ -16,5 +16,10 @@ public class RequestExceptionHandler {
     return validationException.getValidationResults();
   }
 
+  @ExceptionHandler(EntityNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public String entityNotFoundExceptionHandler(EntityNotFoundException exception) {
+    return exception.getMessage();
+  }
 
 }
