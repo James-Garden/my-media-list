@@ -59,7 +59,7 @@ class MediaControllerTest extends AbstractIntegrationTest {
           "/api/media/%s".formatted(UUID.randomUUID()),
           HttpMethod.GET,
           HttpEntity.EMPTY,
-          MediaView.class
+          String.class
       );
 
       assertThat(mediaViewResponseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);

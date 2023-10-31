@@ -14,6 +14,12 @@ const router = createRouter({
       component: () => import('@/views/CreateMediaView.vue')
     },
     {
+      path: '/sign-up',
+      name: 'signup',
+      component: () => import('@/views/SignUpView.vue')
+    },
+    // New routes above this
+    {
       path: '/',
       name: 'home',
       component: () => import('@/views/HomeView.vue')
